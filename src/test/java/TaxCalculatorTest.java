@@ -1,22 +1,34 @@
-import org.apache.javadsa.Product;
-import org.apache.javadsa.TaxCalculator;
+import org.apache.taxcalculatorapp.model.Item;
+import org.apache.taxcalculatorapp.service.BasicSalesTax;
+import org.apache.taxcalculatorapp.service.ImportDutyTax;
+import org.apache.taxcalculatorapp.service.TaxCalculator;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.*;
 
-public class TaxCalculatorTest {
-    @Test
-    public void testTaxRounding() {
-        Product product = new Product("music CD", 14.99, false, false, 1);
-        double tax = TaxCalculator.calculateTax(product);
-        assertEquals(1.50, tax, 0.001);
+class TaxCalculatorTest {
+
+    private TaxCalculator calculator;
+
+    @BeforeEach
+    void setUp() {
+        calculator = new TaxCalculator(List.of(new BasicSalesTax(), new ImportDutyTax()));
     }
 
     @Test
-    public void testImportedExemptProductTax() {
-        Product product = new Product("imported box of chocolates", 10.00, true, true, 1);
-        double tax = TaxCalculator.calculateTax(product);
-        assertEquals(0.50, tax, 0.001);
+    void testBasicTax() {
+        Item item = new Item("music CD", 14.99, false, false);
+        double tax = calculator.calculateTotalTax(item);
+        assertEquals(1.50, tax);
+    }
+
+    @Test
+    void testImportedExemptItem() {
+        Item item = new Item("imported chocolates", 10.00, true, true);
+        double tax = calculator.calculateTotalTax(item);
+        assertEquals(0.50, tax); // only import duty
     }
 }
