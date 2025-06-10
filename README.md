@@ -24,7 +24,7 @@ This is a Java-based command-line application to calculate sales tax and generat
 
 ```bash
 # Compile
-javac -d out src/main/java/org/apache/taxcalculatorapp/**/*.java
+javac -d out src/main/java/org/apache/taxcalculatorapp/Main.java
 
 # Run
 java -cp out org.apache.taxcalculatorapp.Main
