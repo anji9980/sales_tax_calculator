@@ -1,20 +1,30 @@
-This is a console-based Java application that calculates and prints itemized receipts with applicable sales tax and import duty, following specified tax rules.
+# 🧾 Sales Tax Calculator
 
-Features
-Calculates basic sales tax (10%) on all goods except books, food, and medical products
+This is a Java-based command-line application to calculate sales tax and generate purchase receipts from user input.
 
-Adds import duty (5%) on all imported goods, with no exceptions
+## Features
 
-Rounds all tax values up to the nearest 0.05, as per the spec
+- Parses shopping basket items with flexible input format
+- Applies:
+  - **Basic Sales Tax (10%)** on non-exempt items
+  - **Import Duty (5%)** on imported goods
+- Automatically detects item categories (food, books, medicine) via keywords
+- Rounds up tax to the nearest 0.05
+- Cleanly prints formatted receipts for each input group
+- Fully modular structure with testable services
 
-Provides an interactive console interface:
+## Tech Stack
 
-Choose from predefined sample inputs
+- Java 17+ (tested on Java 21)
+- JUnit 5 for unit testing
+- IntelliJ IDEA (recommended)
+- Maven (optional)
 
-Or enter items manually via the console
+## How to Run
 
-Designed using clean OOP principles:
+```bash
+# Compile
+javac -d out src/main/java/org/apache/taxcalculatorapp/**/*.java
 
-Separate classes for parsing, product handling, receipt logic, and printing
-
-Easy to extend or adapt for other tax rules or input formats
+# Run
+java -cp out org.apache.taxcalculatorapp.Main
