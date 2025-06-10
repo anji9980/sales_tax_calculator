@@ -1,4 +1,4 @@
-# 🧾 Sales Tax Calculator
+# Sales Tax Calculator
 
 This is a Java-based command-line application to calculate sales tax and generate purchase receipts from user input.
 
