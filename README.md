@@ -20,11 +20,18 @@ This is a Java-based command-line application to calculate sales tax and generat
 - IntelliJ IDEA (recommended)
 - Maven (optional)
 
-## How to Run
+## Sample I/O
+- INPUT:
+  Input 1:
+  1 book at 12.49
+  1 music CD at 14.99
+  1 chocolate bar at 0.85
 
-```bash
-# Compile
-javac -d out src/main/java/org/apache/taxcalculatorapp/Main.java
+-OUTPUT:
+ Output 1:
+  1 book: 12.49
+  1 music CD: 16.49
+  1 chocolate bar: 0.85
+  Sales Taxes: 1.50
+  Total: 29.83
 
-# Run
-java -cp out org.apache.taxcalculatorapp.Main
